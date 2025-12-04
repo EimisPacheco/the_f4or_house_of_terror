@@ -1,0 +1,7 @@
+{
+  "name": "The Haunted Reflection",
+  "description": "A spooky interactive horror experience where a ghost haunts your reflection. It only appears when you look at the mirror, and flees when you try to touch it.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

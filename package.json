@@ -1,0 +1,21 @@
+{
+  "name": "spooky-ghost-encounter",
+  "version": "1.0.0",
+  "description": "Spooky Halloween app with face and hand detection",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx http-server -p 8080"
+  },
+  "dependencies": {
+    "@mediapipe/face_detection": "^0.4.1646425229",
+    "@mediapipe/hands": "^0.4.1646424915",
+    "@tensorflow-models/face-detection": "^1.0.2",
+    "@tensorflow-models/hand-pose-detection": "^2.0.1",
+    "@tensorflow/tfjs-backend-webgl": "^4.11.0",
+    "@tensorflow/tfjs-converter": "^4.11.0",
+    "@tensorflow/tfjs-core": "^4.11.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

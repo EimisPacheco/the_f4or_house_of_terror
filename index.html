@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost in the Mirror</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- MediaPipe Dependencies (MUST load BEFORE TensorFlow models) -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
+
+    <!-- TensorFlow.js and Models -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-detection@1.0.2/dist/face-detection.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/hand-pose-detection@2.0.0/dist/hand-pose-detection.min.js"></script>
+    
+    <!-- Google Generative AI SDK -->
+    <script type="importmap">
+    {
+        "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai@0.21.0"
+        }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">GHOST IN THE MIRROR</h1>
+            <p class="subtitle">
+                Look directly at the mirror to summon it. Look away to banish it. 
+                Do not try to touch it...
+            </p>
+        </header>
+
+        <main class="main">
+            <div id="idle-screen" class="screen">
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <h2>Warning</h2>
+                    <p>
+                        This experience uses your camera and AI to detect your face and hands. 
+                        Ensure you are in a well-lit room, but keep the mood spooky.
+                    </p>
+                    <button id="start-btn" class="start-button">Start the Ritual</button>
+                </div>
+            </div>
+
+            <div id="loading-screen" class="screen hidden">
+                <h3 class="loading-text">Calibrating Spiritual Sensors...</h3>
+                <p class="loading-subtext">Loading TensorFlow Vision Models</p>
+            </div>
+
+            <div id="generating-screen" class="screen hidden">
+                <h3 class="loading-text generating">Summoning the Entity...</h3>
+                <p class="loading-subtext">Generating Ghost Assets</p>
+            </div>
+
+            <div id="error-screen" class="screen hidden">
+                <div class="error-box">
+                    <h3>Ritual Failed</h3>
+                    <p id="error-message"></p>
+                    <button id="retry-btn" class="retry-button">Try Again</button>
+                </div>
+            </div>
+
+            <div id="game-screen" class="screen hidden">
+                <div class="mirror-container">
+                    <video id="webcam" autoplay playsinline muted></video>
+                    <canvas id="debug-canvas"></canvas>
+                    <img id="ghost-image" class="ghost" alt="Ghost">
+                    <div id="flee-text" class="flee-text hidden">GET AWAY!</div>
+                    <div id="timestamp" class="timestamp">03:17:22 AM</div>
+                    <button id="debug-toggle" class="debug-toggle">[HIDE DEBUG]</button>
+                    <div class="scanlines"></div>
+                    <div class="vignette"></div>
+                </div>
+                
+                <div class="status-bar">
+                    <span class="status-indicator">●</span> LIVE FEED ACTIVE
+                    <span class="separator">|</span>
+                    FACE DETECTOR: ONLINE
+                    <span class="separator">|</span>
+                    HAND TRACKER: ONLINE
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            Powered by Gemini 2.5 Flash, TensorFlow.js & Vanilla JS
+        </footer>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
