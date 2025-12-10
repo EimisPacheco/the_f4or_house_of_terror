@@ -5,7 +5,7 @@ const IMAGE_MODEL_NAME = 'gemini-2.5-flash-image';
 const AUDIO_MODEL_NAME = 'gemini-2.5-flash-preview-tts';
 
 export const generateGhostAsset = async (): Promise<string> => {
-  const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY || "AIzaSyBJr084nLzSX38mLU3yR04tcqD0RnDo3Do" });
+  const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
   const prompt = `
     A terrifying, high-contrast horror movie ghost figure. 
